@@ -15,6 +15,8 @@
 		0FF6CA191F68C1C2002EFEE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF6CA171F68C1C2002EFEE4 /* LaunchScreen.storyboard */; };
 		0FF6CA241F68C1C3002EFEE4 /* SampleCoreToDo_for_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA231F68C1C3002EFEE4 /* SampleCoreToDo_for_iOSTests.swift */; };
 		0FF6CA2F1F68C1C3002EFEE4 /* SampleCoreToDo_for_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA2E1F68C1C3002EFEE4 /* SampleCoreToDo_for_iOSUITests.swift */; };
+		0FF6CA3D1F68C473002EFEE4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA3C1F68C473002EFEE4 /* AddTaskViewController.swift */; };
+		0FF6CA3F1F68CF31002EFEE4 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA3E1F68CF31002EFEE4 /* TaskTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		0FF6CA2A1F68C1C3002EFEE4 /* SampleCoreToDo for iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SampleCoreToDo for iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF6CA2E1F68C1C3002EFEE4 /* SampleCoreToDo_for_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCoreToDo_for_iOSUITests.swift; sourceTree = "<group>"; };
 		0FF6CA301F68C1C3002EFEE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FF6CA3C1F68C473002EFEE4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		0FF6CA3E1F68CF31002EFEE4 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				0FF6CA0B1F68C1C2002EFEE4 /* AppDelegate.swift */,
 				0FF6CA0D1F68C1C2002EFEE4 /* ViewController.swift */,
 				0FF6CA0F1F68C1C2002EFEE4 /* Main.storyboard */,
+				0FF6CA3E1F68CF31002EFEE4 /* TaskTableViewCell.swift */,
+				0FF6CA3C1F68C473002EFEE4 /* AddTaskViewController.swift */,
 				0FF6CA151F68C1C2002EFEE4 /* Assets.xcassets */,
 				0FF6CA171F68C1C2002EFEE4 /* LaunchScreen.storyboard */,
 				0FF6CA1A1F68C1C2002EFEE4 /* Info.plist */,
@@ -263,6 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FF6CA141F68C1C2002EFEE4 /* SampleCoreToDo_for_iOS.xcdatamodeld in Sources */,
+				0FF6CA3D1F68C473002EFEE4 /* AddTaskViewController.swift in Sources */,
+				0FF6CA3F1F68CF31002EFEE4 /* TaskTableViewCell.swift in Sources */,
 				0FF6CA0E1F68C1C2002EFEE4 /* ViewController.swift in Sources */,
 				0FF6CA0C1F68C1C2002EFEE4 /* AppDelegate.swift in Sources */,
 			);
