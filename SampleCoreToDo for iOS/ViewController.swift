@@ -8,10 +8,13 @@
 
 import UIKit
 import CoreData
+import os.log
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Properties
+    
+    static let log = OSLog(subsystem: "jp.tatsudoya.macos..SampleCoreToDo-for-iOS", category: "UI")
     
     @IBOutlet weak var taskTableView: UITableView!
     
@@ -98,6 +101,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Method of Getting data from Core Data
     
     func getData() {
+        os_log("getData() start.", log: ViewController.log, type: .debug)
         let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         do {
@@ -110,10 +114,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             for task in tasks {
                 tasksToShow[task.category!]?.append(task.name!)
+                let key = "testkey"
+                os_log("[plain    ] ★%@★", log: ViewController.log, type: .debug, task.name!)
+                let cipherText = CryptUtil.encryptAES256CBC(key: key, plainText: task.name!)
+                os_log("[encrypted] ★%@★", log: ViewController.log, type: .debug, cipherText)
+                os_log("[decrypted] ★%@★", log: ViewController.log, type: .debug, CryptUtil.decryptAES256CBC(key: key, cipherText: cipherText))
+                os_log("", log: ViewController.log, type: .debug)
             }
         } catch {
             print("Fetching Failed.")
         }
+        os_log("getData() end.", log: ViewController.log, type: .debug)
     }
     
     // MARK: - Navigation
