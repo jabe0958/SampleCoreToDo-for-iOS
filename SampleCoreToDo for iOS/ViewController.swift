@@ -124,6 +124,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } catch {
             print("Fetching Failed.")
         }
+        os_log("[hash     ] ★%@★ -> ★%@★", log: ViewController.log, type: .debug, "p@ssword!", CryptUtil.hashSHA256(value: "p@ssword!", salt: "ssaalltt", stretching: 1000))
         os_log("getData() end.", log: ViewController.log, type: .debug)
     }
     

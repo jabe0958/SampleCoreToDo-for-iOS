@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F5D6F0A1F6E5675004D02A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */; };
+		0F5D6F0C1F6E5B26004D02A2 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */; };
+		0F5D6F0E1F6E7B0C004D02A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */; };
 		0FE1DB7E1F6D38530011B678 /* CryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */; };
 		0FF6CA0C1F68C1C2002EFEE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA0B1F68C1C2002EFEE4 /* AppDelegate.swift */; };
 		0FF6CA0E1F68C1C2002EFEE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA0D1F68C1C2002EFEE4 /* ViewController.swift */; };
@@ -42,6 +45,9 @@
 
 /* Begin PBXFileReference section */
 		0EC1E8280D548DB96B093DC9 /* Pods_SampleCoreToDo_for_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleCoreToDo_for_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptUtil.swift; sourceTree = "<group>"; };
 		0FF6CA081F68C1C2002EFEE4 /* SampleCoreToDo for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleCoreToDo for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF6CA0B1F68C1C2002EFEE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 				0FF6CA1A1F68C1C2002EFEE4 /* Info.plist */,
 				0FF6CA121F68C1C2002EFEE4 /* SampleCoreToDo_for_iOS.xcdatamodeld */,
 				0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */,
+				0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */,
+				0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */,
+				0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */,
 			);
 			path = "SampleCoreToDo for iOS";
 			sourceTree = "<group>";
@@ -471,12 +480,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F5D6F0A1F6E5675004D02A2 /* LoginViewController.swift in Sources */,
+				0F5D6F0C1F6E5B26004D02A2 /* PasswordViewController.swift in Sources */,
 				0FE1DB7E1F6D38530011B678 /* CryptUtil.swift in Sources */,
 				0FF6CA141F68C1C2002EFEE4 /* SampleCoreToDo_for_iOS.xcdatamodeld in Sources */,
 				0FF6CA3D1F68C473002EFEE4 /* AddTaskViewController.swift in Sources */,
 				0FF6CA3F1F68CF31002EFEE4 /* TaskTableViewCell.swift in Sources */,
 				0FF6CA0E1F68C1C2002EFEE4 /* ViewController.swift in Sources */,
 				0FF6CA0C1F68C1C2002EFEE4 /* AppDelegate.swift in Sources */,
+				0F5D6F0E1F6E7B0C004D02A2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
