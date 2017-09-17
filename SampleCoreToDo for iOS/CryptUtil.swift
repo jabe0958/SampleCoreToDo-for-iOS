@@ -7,14 +7,13 @@
 //
 
 import Foundation
-import os.log
 import IDZSwiftCommonCrypto
 
 final public class CryptUtil {
     
     // MARK: - Properties
     
-    static let log = OSLog(subsystem: "jp.tatsudoya.macos..SampleCoreToDo-for-iOS", category: "UTIL")
+    // none
     
     // MARK: - Constructor
     
@@ -39,6 +38,17 @@ final public class CryptUtil {
         let cipherData = Data(base64Encoded: cipherText)
         let decryptedText = cryptor.update(data: cipherData!)?.final()
         return decryptedText!.reduce("") { $0 + String(UnicodeScalar($1)) }
+    }
+    
+    // 与えられた平文とソルトから指定された回数だけストレッチングした SHA256 ハッシュ値を返します。
+    // ストレッチング回数に 0 以下の値が指定された場合においても最低 1 回はハッシュ関数を適用します。
+    static public func hashSHA256(value: String, salt: String, stretching: Int) -> String {
+        let sha256 = Digest(algorithm: Digest.Algorithm.sha256)
+        var hashedValue = hexString(fromArray: (sha256.update(string: value + salt)?.final())!)
+        Array(0..<stretching-1).forEach {_ in
+            hashedValue = hexString(fromArray: (sha256.update(string: hashedValue + salt)?.final())!)
+        }
+        return hashedValue
     }
     
     // 与えられたUTF-8文字列を16進形式の文字列に変換して返します。
