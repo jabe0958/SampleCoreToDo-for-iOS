@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="gJx-Ob-RxZ">
             <objects>
-                <viewController id="3Gr-sc-ytH" customClass="LoginViewController" customModule="SampleCoreToDo_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Gr-sc-ytH" customClass="LoginViewController" customModule="SampleCoreToDo_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TzZ-eF-nY4"/>
                         <viewControllerLayoutGuide type="bottom" id="R4p-Fu-Fbf"/>

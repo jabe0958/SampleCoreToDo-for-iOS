@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        performSegue(withIdentifier: "SegueLoginSuccessViewController", sender: nil)
+        navigateLogined()
     }
     
     @IBAction func touchIdButtonTapped(_ sender: Any) {
@@ -68,7 +68,8 @@ class LoginViewController: UIViewController {
             if _context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
                 _context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: _localizedReason, reply: { success, evaluateError in
                     if success {
-                        self.performSegue(withIdentifier: "SegueLoginSuccessViewController", sender: nil)
+                        // FixMe 落ちるぜ、このコード。
+                        self.navigateLogined()
                     } else {
                         os_log("TouchIDエラー : %@", log: LoginViewController.log, type: .error, evaluateError.debugDescription)
                     }
@@ -82,6 +83,17 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Login Functions
+    
+    private func navigateLogined() {
+        if AppDelegateSupport.isLogined() {
+            let window = self.view.window
+            window?.rootViewController = AppDelegateSupport.getBeforeEnterBackgroundRootViewController()
+            window?.makeKeyAndVisible()
+        } else {
+            AppDelegateSupport.login()
+            performSegue(withIdentifier: "SegueLoginSuccessViewController", sender: nil)
+        }
+    }
     
     private func getHashedPassword() -> String? {
         let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
