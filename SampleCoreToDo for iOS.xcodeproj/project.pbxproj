@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F5848261F6F7A9100BFAA31 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5848251F6F7A9100BFAA31 /* LocalAuthentication.framework */; };
+		0F5848281F6F820100BFAA31 /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5848271F6F820100BFAA31 /* AlertUtil.swift */; };
 		0F5D6F0A1F6E5675004D02A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */; };
 		0F5D6F0C1F6E5B26004D02A2 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */; };
 		0F5D6F0E1F6E7B0C004D02A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */; };
@@ -45,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		0EC1E8280D548DB96B093DC9 /* Pods_SampleCoreToDo_for_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleCoreToDo_for_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F5848251F6F7A9100BFAA31 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		0F5848271F6F820100BFAA31 /* AlertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F5848261F6F7A9100BFAA31 /* LocalAuthentication.framework in Frameworks */,
 				F051F77FA90BDDBAC18FD538 /* Pods_SampleCoreToDo_for_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +146,7 @@
 				0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */,
 				0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */,
 				0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */,
+				0F5848271F6F820100BFAA31 /* AlertUtil.swift */,
 			);
 			path = "SampleCoreToDo for iOS";
 			sourceTree = "<group>";
@@ -166,6 +172,7 @@
 		159F085D280C483A39B92EDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F5848251F6F7A9100BFAA31 /* LocalAuthentication.framework */,
 				0EC1E8280D548DB96B093DC9 /* Pods_SampleCoreToDo_for_iOS.framework */,
 				188BA4FACD69665730887CC2 /* Pods_SampleCoreToDo_for_iOSTests.framework */,
 				E11464F04499ECD822A880B8 /* Pods_SampleCoreToDo_for_iOSUITests.framework */,
@@ -488,6 +495,7 @@
 				0FF6CA3F1F68CF31002EFEE4 /* TaskTableViewCell.swift in Sources */,
 				0FF6CA0E1F68C1C2002EFEE4 /* ViewController.swift in Sources */,
 				0FF6CA0C1F68C1C2002EFEE4 /* AppDelegate.swift in Sources */,
+				0F5848281F6F820100BFAA31 /* AlertUtil.swift in Sources */,
 				0F5D6F0E1F6E7B0C004D02A2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

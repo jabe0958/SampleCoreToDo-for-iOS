@@ -36,6 +36,14 @@
                                     <action selector="loginButtonTapped:" destination="3Gr-sc-ytH" eventType="touchUpInside" id="FDj-Zr-VmG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Gn-NR-gCR">
+                                <rect key="frame" x="141" y="266" width="93" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Touch ID"/>
+                                <connections>
+                                    <action selector="touchIdButtonTapped:" destination="3Gr-sc-ytH" eventType="touchUpInside" id="2DF-zp-FzA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -47,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvx-HI-KPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-663" y="139"/>
+            <point key="canvasLocation" x="-663.20000000000005" y="138.98050974512745"/>
         </scene>
         <!--Password View Controller-->
         <scene sceneID="En1-cD-R6C">

@@ -8,10 +8,14 @@
 
 import UIKit
 import CoreData
+import LocalAuthentication
+import os.log
 
 class LoginViewController: UIViewController {
 
     // MARK: - Properties
+    
+    static let log = OSLog(subsystem: "jp.tatsudoya.macos..SampleCoreToDo-for-iOS", category: "UI")
     
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -43,16 +47,38 @@ class LoginViewController: UIViewController {
         let inputtedPassword = passwordTextField.text!
         
         if inputtedPassword == "" {
-            alertLoginFailed()
+            AlertUtil.alertOK(viewController: self, _title: "パスワードが不正です。", _message: "正しいパスワードを入力してください。")
             return
         }
         
         if CryptUtil.hashSHA256(value: inputtedPassword, salt: Constants.passwordSalt, stretching: Constants.passwordStretching) != getHashedPassword() {
-            alertLoginFailed()
+            AlertUtil.alertOK(viewController: self, _title: "パスワードが不正です。", _message: "正しいパスワードを入力してください。")
             return
         }
         
         performSegue(withIdentifier: "SegueLoginSuccessViewController", sender: nil)
+    }
+    
+    @IBAction func touchIdButtonTapped(_ sender: Any) {
+        let _context = LAContext()
+        let _localizedReason = "パスワード入力の代わりにTouchIDで認証します。"
+        var authError: NSError?
+        
+        if #available(iOS 8.0, macOS 10.12.1, *) {
+            if _context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+                _context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: _localizedReason, reply: { success, evaluateError in
+                    if success {
+                        self.performSegue(withIdentifier: "SegueLoginSuccessViewController", sender: nil)
+                    } else {
+                        os_log("TouchIDエラー : %@", log: LoginViewController.log, type: .error, evaluateError.debugDescription)
+                    }
+                })
+            } else {
+                AlertUtil.alertOK(viewController: self, _title: "TouchID 非対応端末です。", _message: "パスワードによる認証を行なってください。")
+            }
+        } else {
+            AlertUtil.alertOK(viewController: self, _title: "OSバージョンエラー", _message: "TouchIDによる認証が行えるのはiOS8.0以降あるいはmacOS10.12.1以降です。")
+        }
     }
     
     // MARK: - Login Functions
@@ -73,15 +99,6 @@ class LoginViewController: UIViewController {
             print("Fetch Failed.")
         }
         return hashedPassword
-    }
-
-    private func alertLoginFailed() {
-        let alertController = UIAlertController(title: "パスワードが不正です。", message: "正しいパスワードを入力してください。", preferredStyle: UIAlertControllerStyle.alert)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action: UIAlertAction) in
-            print("OK")
-        }
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
     }
 
     /*
