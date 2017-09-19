@@ -68,7 +68,6 @@ class LoginViewController: UIViewController {
             if _context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
                 _context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: _localizedReason, reply: { success, evaluateError in
                     if success {
-                        // FixMe 落ちるぜ、このコード。
                         self.navigateLogined()
                     } else {
                         os_log("TouchIDエラー : %@", log: LoginViewController.log, type: .error, evaluateError.debugDescription)
@@ -86,12 +85,16 @@ class LoginViewController: UIViewController {
     
     private func navigateLogined() {
         if AppDelegateSupport.isLogined() {
-            let window = self.view.window
-            window?.rootViewController = AppDelegateSupport.getBeforeEnterBackgroundRootViewController()
-            window?.makeKeyAndVisible()
+            DispatchQueue.main.async {
+                let window = self.view.window
+                window?.rootViewController = AppDelegateSupport.getBeforeEnterBackgroundRootViewController()
+                window?.makeKeyAndVisible()
+            }
         } else {
             AppDelegateSupport.login()
-            performSegue(withIdentifier: "SegueLoginSuccessViewController", sender: nil)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "SegueLoginSuccessViewController", sender: nil)
+            }
         }
     }
     
