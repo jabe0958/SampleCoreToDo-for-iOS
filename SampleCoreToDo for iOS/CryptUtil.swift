@@ -37,7 +37,8 @@ final public class CryptUtil {
         let cryptor = Cryptor(operation: .decrypt, algorithm: .aes, options: .PKCS7Padding, key: keyHex, iv: Array<UInt8>())
         let cipherData = Data(base64Encoded: cipherText)
         let decryptedText = cryptor.update(data: cipherData!)?.final()
-        return decryptedText!.reduce("") { $0 + String(UnicodeScalar($1)) }
+        let decryptedData = dataFrom(byteArray: decryptedText!)
+        return String(data: decryptedData, encoding: .utf8)!
     }
     
     // 与えられた平文とソルトから指定された回数だけストレッチングした SHA256 ハッシュ値を返します。
