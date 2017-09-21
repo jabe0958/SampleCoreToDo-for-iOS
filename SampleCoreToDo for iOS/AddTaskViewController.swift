@@ -73,7 +73,7 @@ class AddTaskViewController: UIViewController {
             return
         }
         
-        let todoModel = ToDoModel(context: _context)
+        let todoModel = ToDoCoreDataModel(context: _context)
         do {
             try todoModel.updateToDo(task: task, editedCategory: taskCategory, editedName: taskName!)
         } catch {

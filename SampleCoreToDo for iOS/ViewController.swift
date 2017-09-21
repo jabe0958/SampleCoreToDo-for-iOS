@@ -80,7 +80,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let deletedCategory = taskCategories[indexPath.section]
             let deletedName = tasksToShow[deletedCategory]?[indexPath.row]
             
-            let todoModel = ToDoModel(context: _context)
+            let todoModel = ToDoCoreDataModel(context: _context)
             do {
                 try todoModel.deleteToDo(deletedCategory: deletedCategory, deletedName: deletedName!)
             } catch {
@@ -99,7 +99,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         os_log("getData() start.", log: ViewController.log, type: .debug)
         let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-        let todoModel = ToDoModel(context: _context)
+        let todoModel = ToDoCoreDataModel(context: _context)
         tasksToShow = todoModel.getToDos()
         os_log("getData() end.", log: ViewController.log, type: .debug)
     }
@@ -115,7 +115,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let editedCategory = taskCategories[indexPath.section]
             let editedName = tasksToShow[editedCategory]?[indexPath.row]
             
-            let todoModel = ToDoModel(context: _context)
+            let todoModel = ToDoCoreDataModel(context: _context)
             do {
                 let task = try todoModel.getToDo(category: editedCategory, name: editedName!)
                 destinationViewController.task = task
