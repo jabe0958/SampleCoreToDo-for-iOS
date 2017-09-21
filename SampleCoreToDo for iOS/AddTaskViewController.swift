@@ -73,16 +73,12 @@ class AddTaskViewController: UIViewController {
             return
         }
         
-        if task == nil {
-            task = Task(context: _context)
+        let todoModel = ToDoModel(context: _context)
+        do {
+            try todoModel.updateToDo(task: task, editedCategory: taskCategory, editedName: taskName!)
+        } catch {
+            print("Save Failed.")
         }
-        
-        if let task = task {
-            task.name = taskName
-            task.category = taskCategory
-        }
-        
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         dismiss(animated: true, completion: nil)
     }

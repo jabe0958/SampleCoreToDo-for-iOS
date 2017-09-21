@@ -80,17 +80,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let deletedCategory = taskCategories[indexPath.section]
             let deletedName = tasksToShow[deletedCategory]?[indexPath.row]
             
-            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "name =%@ and category = %@", deletedName!, deletedCategory)
-            
+            let todoModel = ToDoModel(context: _context)
             do {
-                let task = try _context.fetch(fetchRequest)
-                _context.delete(task[0])
+                try todoModel.deleteToDo(deletedCategory: deletedCategory, deletedName: deletedName!)
             } catch {
-                print("Fething Failed.")
+                print("Fethching Failed.")
             }
-            
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
             
             getData()
         }
@@ -103,28 +98,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func getData() {
         os_log("getData() start.", log: ViewController.log, type: .debug)
         let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        do {
-            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-            tasks = try _context.fetch(fetchRequest)
-            
-            for key in tasksToShow.keys {
-                tasksToShow[key] = []
-            }
-            
-            for task in tasks {
-                tasksToShow[task.category!]?.append(task.name!)
-                let key = "testkey"
-                os_log("[plain    ] ★%@★", log: ViewController.log, type: .debug, task.name!)
-                let cipherText = CryptUtil.encryptAES256CBC(key: key, plainText: task.name!)
-                os_log("[encrypted] ★%@★", log: ViewController.log, type: .debug, cipherText)
-                os_log("[decrypted] ★%@★", log: ViewController.log, type: .debug, CryptUtil.decryptAES256CBC(key: key, cipherText: cipherText))
-                os_log("", log: ViewController.log, type: .debug)
-            }
-        } catch {
-            print("Fetching Failed.")
-        }
-        os_log("[hash     ] ★%@★ -> ★%@★", log: ViewController.log, type: .debug, "p@ssword!", CryptUtil.hashSHA256(value: "p@ssword!", salt: "ssaalltt", stretching: 1000))
+
+        let todoModel = ToDoModel(context: _context)
+        tasksToShow = todoModel.getToDos()
         os_log("getData() end.", log: ViewController.log, type: .debug)
     }
     
@@ -139,14 +115,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let editedCategory = taskCategories[indexPath.section]
             let editedName = tasksToShow[editedCategory]?[indexPath.row]
             
-            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "name = %@ and category = %@", editedName!, editedCategory)
-            
+            let todoModel = ToDoModel(context: _context)
             do {
-                let task = try _context.fetch(fetchRequest)
-                destinationViewController.task = task[0]
+                let task = try todoModel.getToDo(category: editedCategory, name: editedName!)
+                destinationViewController.task = task
             } catch {
-                print("Fething Failed.")
+                print("Fetching Failed.")
             }
         }
     }
