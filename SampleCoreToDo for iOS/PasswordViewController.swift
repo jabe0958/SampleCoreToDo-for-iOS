@@ -53,6 +53,9 @@ class PasswordViewController: UIViewController {
             }
             configPassword?.value = CryptUtil.hashSHA256(value: newPassword, salt: Constants.passwordSalt, stretching: Constants.passwordStretching)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            let todoModel = ToDoJSONModel()
+            try todoModel.reencrypt(newPassword: newPassword)
+            AppDelegateSupport.setHashedLoginPassword(hashedLoginPassword: newPassword)
         } catch {
             print("Fetching Failed.")
         }

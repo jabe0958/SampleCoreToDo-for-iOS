@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import os.log
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -74,13 +73,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         if editingStyle == .delete {
             let deletedCategory = taskCategories[indexPath.section]
             let deletedName = tasksToShow[deletedCategory]?[indexPath.row]
             
-            let todoModel = ToDoCoreDataModel(context: _context)
+            let todoModel = ToDoJSONModel()
             do {
                 try todoModel.deleteToDo(deletedCategory: deletedCategory, deletedName: deletedName!)
             } catch {
@@ -93,13 +91,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         taskTableView.reloadData()
     }
     
-    // MARK: - Method of Getting data from Core Data
+    // MARK: - Method of Getting data from JSON File
     
     func getData() {
         os_log("getData() start.", log: ViewController.log, type: .debug)
-        let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-        let todoModel = ToDoCoreDataModel(context: _context)
+        let todoModel = ToDoJSONModel()
         tasksToShow = todoModel.getToDos()
         os_log("getData() end.", log: ViewController.log, type: .debug)
     }
@@ -109,19 +105,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destinationViewController = segue.destination as? AddTaskViewController else {return}
         
-        let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
         if let indexPath = taskTableView.indexPathForSelectedRow, segue.identifier == segueEditTaskViewController {
             let editedCategory = taskCategories[indexPath.section]
             let editedName = tasksToShow[editedCategory]?[indexPath.row]
             
-            let todoModel = ToDoCoreDataModel(context: _context)
-            do {
-                let task = try todoModel.getToDo(category: editedCategory, name: editedName!)
-                destinationViewController.task = task
-            } catch {
-                print("Fetching Failed.")
-            }
+            destinationViewController.receivedCategory = editedCategory
+            destinationViewController.receivedName = editedName
         }
     }
 }

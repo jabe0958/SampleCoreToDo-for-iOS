@@ -13,6 +13,8 @@ final public class CryptUtil {
     
     // MARK: - Properties
     
+    static private let iv: [UInt8] = [97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112] // "abcdefghijklmnop"
+    
     // none
     
     // MARK: - Constructor
@@ -25,7 +27,7 @@ final public class CryptUtil {
     static public func encryptAES256CBC(key: String, plainText: String) -> String {
         let keyHexString = utf8ToHexString(value: key)
         let keyHex = arrayFrom(hexString: keyHexString)
-        let cryptor = Cryptor(operation: .encrypt, algorithm: .aes, options: .PKCS7Padding, key: keyHex, iv: Array<UInt8>())
+        let cryptor = Cryptor(operation: .encrypt, algorithm: .aes, options: .PKCS7Padding, key: keyHex, iv: self.iv)
         let cipherData = cryptor.update(string: plainText)?.final()
         return dataFrom(byteArray: cipherData!).base64EncodedString()
     }
@@ -34,7 +36,7 @@ final public class CryptUtil {
     static public func decryptAES256CBC(key: String, cipherText: String) -> String {
         let keyHexString = utf8ToHexString(value: key)
         let keyHex = arrayFrom(hexString: keyHexString)
-        let cryptor = Cryptor(operation: .decrypt, algorithm: .aes, options: .PKCS7Padding, key: keyHex, iv: Array<UInt8>())
+        let cryptor = Cryptor(operation: .decrypt, algorithm: .aes, options: .PKCS7Padding, key: keyHex, iv: self.iv)
         let cipherData = Data(base64Encoded: cipherText)
         let decryptedText = cryptor.update(data: cipherData!)?.final()
         let decryptedData = dataFrom(byteArray: decryptedText!)

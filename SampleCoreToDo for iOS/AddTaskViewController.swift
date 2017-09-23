@@ -16,7 +16,8 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var categorySegmentedControl: UISegmentedControl!
     
     var _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var task: Task?
+    var receivedCategory: String?
+    var receivedName: String?
     
     // MARK: -
     
@@ -27,10 +28,10 @@ class AddTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let task = task {
-            taskTextField.text = task.name
-            taskCategory = task.category!
-            switch task.category! {
+        if receivedCategory != nil {
+            taskTextField.text = receivedName
+            taskCategory = receivedCategory!
+            switch taskCategory {
             case "ToDo":
                 categorySegmentedControl.selectedSegmentIndex = 0
             case "Shopping":
@@ -73,9 +74,9 @@ class AddTaskViewController: UIViewController {
             return
         }
         
-        let todoModel = ToDoCoreDataModel(context: _context)
+        let todoModel = ToDoJSONModel()
         do {
-            try todoModel.updateToDo(task: task, editedCategory: taskCategory, editedName: taskName!)
+            try todoModel.updateToDo(editedCategory: taskCategory, editedName: taskName!, originalName: receivedName)
         } catch {
             print("Save Failed.")
         }

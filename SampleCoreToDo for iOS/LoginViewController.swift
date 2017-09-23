@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
             performSegue(withIdentifier: "SegueEditPasswordViewController", sender: nil)
             return
         }
-        print("HashedPassword : ★" + (hashedPassword)! + "★")
     }
     
     override func viewDidLoad() {
@@ -92,6 +91,7 @@ class LoginViewController: UIViewController {
             }
         } else {
             AppDelegateSupport.login()
+            AppDelegateSupport.setHashedLoginPassword(hashedLoginPassword: getHashedPassword()!)
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "SegueLoginSuccessViewController", sender: nil)
             }

@@ -13,6 +13,7 @@
 		0F5D6F0A1F6E5675004D02A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */; };
 		0F5D6F0C1F6E5B26004D02A2 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */; };
 		0F5D6F0E1F6E7B0C004D02A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */; };
+		0F6C0C571F766D7D00739BC7 /* ToDoJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C0C561F766D7D00739BC7 /* ToDoJSONModel.swift */; };
 		0FA54FCE1F738321005D6B06 /* ToDoCoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA54FCD1F738321005D6B06 /* ToDoCoreDataModel.swift */; };
 		0FE1DB7E1F6D38530011B678 /* CryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */; };
 		0FF6CA0C1F68C1C2002EFEE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA0B1F68C1C2002EFEE4 /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 		0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0F6C0C561F766D7D00739BC7 /* ToDoJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoJSONModel.swift; sourceTree = "<group>"; };
 		0FA54FCD1F738321005D6B06 /* ToDoCoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCoreDataModel.swift; sourceTree = "<group>"; };
 		0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptUtil.swift; sourceTree = "<group>"; };
 		0FF6CA081F68C1C2002EFEE4 /* SampleCoreToDo for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleCoreToDo for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,13 +148,14 @@
 				0FF6CA171F68C1C2002EFEE4 /* LaunchScreen.storyboard */,
 				0FF6CA1A1F68C1C2002EFEE4 /* Info.plist */,
 				0FF6CA121F68C1C2002EFEE4 /* SampleCoreToDo_for_iOS.xcdatamodeld */,
-				0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */,
 				0F5D6F091F6E5675004D02A2 /* LoginViewController.swift */,
 				0F5D6F0B1F6E5B26004D02A2 /* PasswordViewController.swift */,
 				0F5D6F0D1F6E7B0C004D02A2 /* Constants.swift */,
 				0F5848271F6F820100BFAA31 /* AlertUtil.swift */,
 				0F58482F1F6FD27A00BFAA31 /* AppDelegateSupport.swift */,
+				0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */,
 				0FA54FCD1F738321005D6B06 /* ToDoCoreDataModel.swift */,
+				0F6C0C561F766D7D00739BC7 /* ToDoJSONModel.swift */,
 			);
 			path = "SampleCoreToDo for iOS";
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				0F5848301F6FD27A00BFAA31 /* AppDelegateSupport.swift in Sources */,
 				0FF6CA0C1F68C1C2002EFEE4 /* AppDelegate.swift in Sources */,
 				0F5848281F6F820100BFAA31 /* AlertUtil.swift in Sources */,
+				0F6C0C571F766D7D00739BC7 /* ToDoJSONModel.swift in Sources */,
 				0F5D6F0E1F6E7B0C004D02A2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,4 +18,5 @@ final class Constants {
     
     static public let passwordMinimumLength = 8
     
+    static public let jsonFileName = "json.txt"
 }
