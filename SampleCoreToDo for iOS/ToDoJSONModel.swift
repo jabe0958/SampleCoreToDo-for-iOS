@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyDropbox
 
 class ToDoJSONModel {
     
@@ -25,19 +26,23 @@ class ToDoJSONModel {
         var jsonData: Data
         var jsonObjects: NSArray
         
+        var jsonString: String = ""
         do {
-            let jsonString = try String(contentsOf: getJsonFilePath()!, encoding: .utf8)
-            let decryptedJsonString = CryptUtil.decryptAES256CBC(key: AppDelegateSupport.getHashedLoginPassword(), cipherText: jsonString)
-            jsonData = decryptedJsonString.data(using: .utf8)!
+            if AppDelegateSupport.isSaveDropbox() {
+                readJsonFromDropbox()
+            }
+            jsonString = try String(contentsOf: getJsonFilePath()!, encoding: .utf8)
         } catch {
             print("Reading JSON file is Failed.")
             return tasksToShow
         }
+        let decryptedJsonString = CryptUtil.decryptAES256CBC(key: AppDelegateSupport.getHashedLoginPassword(), cipherText: jsonString)
+        jsonData = decryptedJsonString.data(using: .utf8)!
         
         do {
             jsonObjects = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! NSArray
         } catch {
-            print("Pasing JSON is Failed.")
+            print("Parsing JSON is Failed.")
             return tasksToShow
         }
         
@@ -51,6 +56,25 @@ class ToDoJSONModel {
         }
         
         return tasksToShow
+    }
+    
+    public func readJsonFromDropbox() {
+        let destURL = getJsonFilePath()
+        let destination: (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
+            return destURL!
+        }
+        let client = DropboxClientsManager.authorizedClient
+        client!.files.download(path: "/" + Constants.jsonFileName, overwrite: true, destination: destination)
+            .response { response, error in
+                //                        if let response = response {
+                //                            print(response)
+                //                        } else if let error = error {
+                //                            print(error)
+                //                        }
+            }
+            .progress { progressData in
+                //                        print(progressData)
+        }
     }
     
     public func getToDo(category: String, name: String) throws -> Task? {
@@ -111,7 +135,6 @@ class ToDoJSONModel {
     }
     
     private func saveJson(jsonObject: Array<Any>, password: String) throws {
-        print("saveJson() : " + password)
         let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
         let jsonStr = String(bytes: jsonData, encoding: .utf8)
         let encryptedJsonStr = CryptUtil.encryptAES256CBC(key: password, plainText: jsonStr!)
@@ -120,6 +143,26 @@ class ToDoJSONModel {
             try encryptedJsonStr.write(to: path_file_name, atomically: false, encoding: .utf8)
         } catch {
             print("Write Failed.")
+        }
+        if AppDelegateSupport.isSaveDropbox() {
+            saveJsonToDropbox(encryptedJsonStr: encryptedJsonStr)
+        }
+        
+    }
+    
+    private func saveJsonToDropbox(encryptedJsonStr: String) {
+        let client = DropboxClientsManager.authorizedClient
+        let encryptedJsonData = encryptedJsonStr.data(using: .utf8, allowLossyConversion: false)!
+        client!.files.upload(path: "/" + Constants.jsonFileName, mode: .overwrite, input: encryptedJsonData)
+            .response { response, error in
+//                if let response = response {
+//                    print(response)
+//                } else if let error = error {
+//                    print(error)
+//                }
+            }
+            .progress { progressData in
+//                print(progressData)
         }
     }
     

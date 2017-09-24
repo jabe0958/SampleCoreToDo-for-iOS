@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 final class AppDelegateSupport {
     
@@ -51,6 +52,27 @@ final class AppDelegateSupport {
             self.hashedLoginPassword = hashedLoginPassword.substring(to: hashedLoginPassword.index(hashedLoginPassword.startIndex, offsetBy: keyByteLengthAES256))
         } else {
             self.hashedLoginPassword = hashedLoginPassword
+        }
+    }
+    
+    static func isSaveDropbox() -> Bool {
+        let _context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Config> = Config.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "key = %@", Constants.configKeyDropboxSet)
+        do {
+            let configDropboxSets = try _context.fetch(fetchRequest)
+            if configDropboxSets.count == 0 {
+                return false
+            } else {
+                if configDropboxSets[0].value == "1" {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        } catch {
+            print("Fetching Failed.")
+            return false
         }
     }
 }

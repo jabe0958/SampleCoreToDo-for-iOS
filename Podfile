@@ -19,5 +19,6 @@ target 'SampleCoreToDo for iOS' do
 
   # Add Linkage Library
   pod 'IDZSwiftCommonCrypto', '~> 0.9.1'
+  pod 'SwiftyDropbox'
 
 end

@@ -16,6 +16,7 @@
 		0F6C0C571F766D7D00739BC7 /* ToDoJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C0C561F766D7D00739BC7 /* ToDoJSONModel.swift */; };
 		0FA54FCE1F738321005D6B06 /* ToDoCoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA54FCD1F738321005D6B06 /* ToDoCoreDataModel.swift */; };
 		0FE1DB7E1F6D38530011B678 /* CryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */; };
+		0FEDE6FB1F77812C00C3A105 /* SaveConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDE6FA1F77812C00C3A105 /* SaveConfigViewController.swift */; };
 		0FF6CA0C1F68C1C2002EFEE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA0B1F68C1C2002EFEE4 /* AppDelegate.swift */; };
 		0FF6CA0E1F68C1C2002EFEE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6CA0D1F68C1C2002EFEE4 /* ViewController.swift */; };
 		0FF6CA111F68C1C2002EFEE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF6CA0F1F68C1C2002EFEE4 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		0F6C0C561F766D7D00739BC7 /* ToDoJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoJSONModel.swift; sourceTree = "<group>"; };
 		0FA54FCD1F738321005D6B06 /* ToDoCoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCoreDataModel.swift; sourceTree = "<group>"; };
 		0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptUtil.swift; sourceTree = "<group>"; };
+		0FEDE6FA1F77812C00C3A105 /* SaveConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveConfigViewController.swift; sourceTree = "<group>"; };
 		0FF6CA081F68C1C2002EFEE4 /* SampleCoreToDo for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleCoreToDo for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF6CA0B1F68C1C2002EFEE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FF6CA0D1F68C1C2002EFEE4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				0FE1DB7D1F6D38530011B678 /* CryptUtil.swift */,
 				0FA54FCD1F738321005D6B06 /* ToDoCoreDataModel.swift */,
 				0F6C0C561F766D7D00739BC7 /* ToDoJSONModel.swift */,
+				0FEDE6FA1F77812C00C3A105 /* SaveConfigViewController.swift */,
 			);
 			path = "SampleCoreToDo for iOS";
 			sourceTree = "<group>";
@@ -478,11 +481,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SampleCoreToDo for iOS/Pods-SampleCoreToDo for iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IDZSwiftCommonCrypto/IDZSwiftCommonCrypto.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyDropbox/SwiftyDropbox.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDZSwiftCommonCrypto.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyDropbox.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -503,6 +510,7 @@
 				0FF6CA3D1F68C473002EFEE4 /* AddTaskViewController.swift in Sources */,
 				0FA54FCE1F738321005D6B06 /* ToDoCoreDataModel.swift in Sources */,
 				0FF6CA3F1F68CF31002EFEE4 /* TaskTableViewCell.swift in Sources */,
+				0FEDE6FB1F77812C00C3A105 /* SaveConfigViewController.swift in Sources */,
 				0FF6CA0E1F68C1C2002EFEE4 /* ViewController.swift in Sources */,
 				0F5848301F6FD27A00BFAA31 /* AppDelegateSupport.swift in Sources */,
 				0FF6CA0C1F68C1C2002EFEE4 /* AppDelegate.swift in Sources */,
